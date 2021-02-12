@@ -1,0 +1,86 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-android-extensions'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.github.ferum_bot.games_rawg"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    viewBinding.enabled = true
+    dataBinding.enabled = true
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation libs.coroutines
+    implementation libs.timber
+
+
+    implementation libs.appcompat
+    implementation libs.coreKtx
+    implementation libs.constraintLayout
+    implementation libs.material
+    implementation libs.fragment
+
+    implementation libs.lifecycleViewModel
+    implementation libs.lifecycleLiveData
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.3'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.3'
+    kapt libs.lifecycleCompiler
+
+    implementation libs.adapterDelegates
+    implementation libs.adapterDelegatesViewBinding
+
+    implementation libs.glide
+    kapt libs.glideCompiler
+
+    implementation libs.dagger
+    kapt libs.daggerCompiler
+
+    implementation libs.paging
+
+    implementation libs.delegateAdapterDSL
+    implementation libs.delegateAdapterViewBinding
+
+    implementation project(':core-network')
+
+    testImplementation libs.testPaging
+    testImplementation 'junit:junit:4.13.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+}

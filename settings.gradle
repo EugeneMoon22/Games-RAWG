@@ -1,0 +1,3 @@
+rootProject.name = "Games-RAWG"
+include ':app'
+include ':core-network'
